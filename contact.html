@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>4uhost</title>
+      <title>Cashurn</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -101,16 +101,16 @@
                   <form id="request" class="main_form">
                      <div class="row">
                         <div class="col-md-12 ">
-                           <input class="contactus" placeholder="Name" type="type" name=" Name"> 
+                           <input class="contactus" id="name" placeholder="Name" type="type" name=" Name"> 
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="Phone number" type="type" name="Phone Number">                          
+                           <input class="contactus" id="phone" placeholder="Phone number" type="type" name="Phone Number">                          
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="Your Email" type="type" name="Email">                          
+                           <input class="contactus" id="email" placeholder="Your Email" type="type" name="Email">                          
                         </div>
                         <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="type" Message="Name"></textarea>
+                           <textarea class="textarea" id="message" placeholder="Message" type="type" Message="Name"></textarea>
                         </div>
                         <div class="col-md-12">
                            <button class="send_btn">Submit Now</button>
@@ -193,5 +193,19 @@
       <script src="js/bootstrap.bundle.min.js"></script>
       <!-- sidebar -->
       <script src="js/custom.js"></script>
+      <script src="https://smtpjs.com/v3/smtp.js"></script>
+      <script>
+         Email.send({
+            Host : "smtp.elasticemail.com",
+            Username : "username",
+            Password : "password",
+            To : 'support@cashurn.com',
+            From : document.getElementById("email"),
+            Subject : "Contact Form Enquiry",
+            Body : document.getElementById("message")
+         }).then(
+         message => alert(message)
+         );
+      </script>
    </body>
 </html>
