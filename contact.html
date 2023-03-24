@@ -98,7 +98,7 @@
                   </div>
                </div>
                <div class="col-md-10 offset-md-1">
-                  <form id="request" class="main_form">
+                  <form id="request" class="main_form" onsubmit="sendEmail(); reset(); false;">
                      <div class="row">
                         <div class="col-md-12 ">
                            <input class="contactus" id="name" placeholder="Name" type="type" name=" Name"> 
@@ -113,7 +113,7 @@
                            <textarea class="textarea" id="message" placeholder="Message" type="type" Message="Name"></textarea>
                         </div>
                         <div class="col-md-12">
-                           <button class="send_btn">Submit Now</button>
+                           <button class="send_btn" type="submit">Submit Now</button>
                         </div>
                      </div>
                   </form>
@@ -195,17 +195,19 @@
       <script src="js/custom.js"></script>
       <script src="https://smtpjs.com/v3/smtp.js"></script>
       <script>
-         Email.send({
-            Host : "smtp.elasticemail.com",
-            Username : "username",
-            Password : "password",
-            To : 'support@cashurn.com',
-            From : document.getElementById("email"),
-            Subject : "Contact Form Enquiry",
-            Body : document.getElementById("message")
-         }).then(
-         message => alert(message)
-         );
+         function sendEmail() {
+            Email.send({
+               Host : "smtp.elasticemail.com",
+               Username : "username",
+               Password : "password",
+               To : 'support@cashurn.com',
+               From : document.getElementById("email"),
+               Subject : "Contact Form Enquiry",
+               Body : document.getElementById("message")
+            }).then(
+            message => alert(message)
+            );
+         }
       </script>
    </body>
 </html>
